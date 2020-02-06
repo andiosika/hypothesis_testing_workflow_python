@@ -18,7 +18,7 @@ def Cohen_d(group1, group2, correction = False):
     > Medium Effect = 0.5
     > Large Effect = 0.8
     
-    """
+    """    
     import scipy.stats as stats
     import scipy   
     import numpy as np
@@ -41,35 +41,44 @@ def Cohen_d(group1, group2, correction = False):
     
     return d
 
-
 #Your code here
-def find_outliers_Z(data):
-    """Use scipy to calculate absolute Z-scores 
-    and return boolean series where True indicates it is an outlier.
+def find_outliers_Z(data,col=None):
+    """Use scipy to calcualte absoliute Z-scores 
+    and return boolean series where True indicates it is an outlier
 
     Args:
-        data (Series,or ndarray): data to test for outliers.
+        data (DataFrame,Series,or ndarray): data to test for outliers.
+        col (str): If passing a DataFrame, must specify column to use.
 
     Returns:
         [boolean Series]: A True/False for each row use to slice outliers.
         
     EXAMPLE USE: 
-    >> idx_outs = find_outliers_df(df['AdjustedCompensation'])
-    >> good_data = df[~idx_outs].copy()
+    >> idx_outs = find_outliers_df(df,col='AdjustedCompensation')
+    >> good_data = data[~idx_outs].copy()
     """
-    import scipy.stats as stats
-    ## Calculate z-scores
-    zs = stats.zscore(data)
     
-    ## Find z-scores >3 awayfrom mean
-    idx_outs = np.abs(zs)>3
-    
-    ## If input was a series, make idx_outs index match
-    if isinstance(data,pd.Series):
-        return pd.Series(idx_outs,index=data.index)
+    from scipy import stats
+    import numpy as np
+    import pandas as pd
+
+    if isinstance(data, pd.DataFrame):
+        if col is None:
+            raise Exception('If passing a DataFrame, must provide col=')
+        else:
+            data = data[col]
+    elif isinstance(data,np.ndarray):
+        data= pd.Series(data)
+
+    elif isinstance(data,pd.Series):
+        pass
     else:
-        return pd.Series(idx_outs)
+        raise Exception('data must be a DataFrame, Series, or np.ndarray')
     
+    z = np.abs(stats.zscore(data))
+    idx_outliers = np.where(z>3,True,False)
+    return idx_outliers
+
     
     
 def find_outliers_IQR(data):
@@ -95,6 +104,7 @@ def find_outliers_IQR(data):
     >> good_data = df[~idx_outs].copy()
     
     """
+    import pandas as pd
     df_b=data
     res= df_b.describe()
 
