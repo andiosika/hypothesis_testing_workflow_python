@@ -152,3 +152,25 @@ def test_assumptions(**kwargs):
     res=pd.DataFrame(res[1:],columns=res[0]).round(3)
     
     return res
+
+def prep_data_for_tukeys(reps):
+     """Accepts a dictionary with group names as the keys 
+    and pandas series as the values. 
+    
+    Returns a dataframe ready for tukeys test:
+    - with a 'data' column and a 'group' column for sms.stats.multicomp.pairwise_tukeyhsd 
+    
+    Example Use:
+    df_tukey = prep_data_for_tukeys(grp_data)
+    tukey = sms.stats.multicomp.pairwise_tukeyhsd(df_tukey['data'], df_tukey['group'])
+    tukey.summary()"""
+    import pandas as pd
+    df_tukey = pd.DataFrame(columns=['data','group'])
+    for k,v in  reps.items():
+        grp_df = v.rename('data').to_frame() 
+        grp_df['group'] = k
+        df_tukey=pd.concat([df_tukey,grp_df],axis=0)
+    return df_tukey
+
+
+
