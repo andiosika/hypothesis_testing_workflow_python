@@ -115,3 +115,40 @@ def find_outliers_IQR(data):
     idx_outs = (df_b>upper_limit) | (df_b<lower_limit)
 
     return idx_outs
+
+def test_equal_variance(grp1,grp2, alpha=.05):
+    stat,p = stats.levene(grp1,grp2)
+    if p<alpha:
+        print(f"Levene's test p value of {np.round(p,3)} is < {alpha}, therefore groups do NOT have equal variance.")
+    else:
+        print(f"Normal test p value of {np.round(p,3)} is > {alpha},  therefore groups DOES have equal variance.")
+    return p
+
+def test_normality(grp_control,col='BL',alpha=0.05):
+    import scipy.stats as stats
+    stat,p =stats.normaltest(grp_control[col])
+    if p<alpha:
+        print(f"Normal test p value of {np.round(p,3)} is < {alpha}, therefore data is NOT normal.")
+    else:
+        print(f"Normal test p value of {np.round(p,3)} is > {alpha}, therefore data IS normal.")
+    return p
+
+def test_assumptions(**kwargs):
+    import scipy.stats as stats
+    res= [['Test','Group','Stat','p','p<.05']]
+    
+    all_data = []
+    for k,v in kwargs.items():
+        try:
+            all_data.append(v)
+            stat,p =stats.normaltest(v)
+            res.append(['Normality',k,stat,p,p<.05])
+        except:
+            res.append(['Normality',k,'err','err','err'])
+        
+    stat,p = stats.levene(*all_data)
+    res.append(['Equal Variance','All',stat,p,p<.05]) 
+    
+    res=pd.DataFrame(res[1:],columns=res[0]).round(3)
+    
+    return res
