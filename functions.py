@@ -154,7 +154,7 @@ def test_assumptions(**kwargs):
     return res
 
 def prep_data_for_tukeys(reps):
-     """Accepts a dictionary with group names as the keys 
+    """Accepts a dictionary with group names as the keys 
     and pandas series as the values. 
     
     Returns a dataframe ready for tukeys test:
@@ -172,5 +172,6 @@ def prep_data_for_tukeys(reps):
         df_tukey=pd.concat([df_tukey,grp_df],axis=0)
     return df_tukey
 
+     
 
 
