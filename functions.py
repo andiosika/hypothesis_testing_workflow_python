@@ -170,6 +170,8 @@ def prep_data_for_tukeys(reps):
         grp_df = v.rename('data').to_frame() 
         grp_df['group'] = k
         df_tukey=pd.concat([df_tukey,grp_df],axis=0)
+        df_tukey['group']=df_tukey['group'].astype(str)
+        df_tukey['data']=df_tukey['data'].astype(float)
     return df_tukey
 
      
