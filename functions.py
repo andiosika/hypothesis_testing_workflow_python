@@ -174,6 +174,22 @@ def prep_data_for_tukeys(reps):
         df_tukey['data']=df_tukey['data'].astype(float)
     return df_tukey
 
+def tukey_df(tukey_results):
+    '''Creates a DataFrame from the .stats Tukey test
+    output can be sliced/manipulated accordingly
+    
+    Example use: building a dataframe for slicing out 
+    the samples that are statistically not equal and 
+    return a True value on Tukey test.
+    
+    tukeycdf = tukey_df(tukeyc)
+    
+    tukeyctrues  = tukeycdf.loc[tukeycdf['reject']==True]
+    tukeyctrues '''
+    
+    tukey_df = pd.DataFrame(data=tukey_results._results_table.data[1:], columns=tukey_results._results_table.data[0])
+    return tukey_df
+
      
 
 
