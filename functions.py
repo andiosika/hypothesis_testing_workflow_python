@@ -186,10 +186,27 @@ def tukey_df(tukey_results):
     
     tukeyctrues  = tukeycdf.loc[tukeycdf['reject']==True]
     tukeyctrues '''
-    
+    import pandas as pd
     tukey_df = pd.DataFrame(data=tukey_results._results_table.data[1:], columns=tukey_results._results_table.data[0])
     return tukey_df
 
+def mult_Cohn_d(tukey_result_df, df_dict):
+    '''Using a dataframe from Tukey Test Results and a 
+    corresponding dictionary, this function loops through 
+    each variable and returns the adjusted p-value and Cohn_d test'''
+    import pandas as pd
+    
+    res = [['g1', 'g2','padj', 'd']]
+    for i, row in tukey_result_df.iterrows():
+        g1 = row['group1']
+        g2 = row['group2']
+        padj = row['p-adj']
+        d = fn.Cohen_d(df_dict[g1], df_dict[g2])
+
+        res.append([g1, g2,padj, d])
+
+    mdc = pd.DataFrame(res[1:], columns=res[0])
+    return mdc
      
 
 
