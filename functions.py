@@ -207,6 +207,15 @@ def mult_Cohn_d(tukey_result_df, df_dict):
 
     mdc = pd.DataFrame(res[1:], columns=res[0])
     return mdc
+
+def sort_index(df):
+    ''' Tool for sorting an index, 
+    
+    Example use:
+    sns.barplot(data=dg, x='group', y='data', ci=68,order=index, palette="rocket", ax=ax) '''
+    
+    index = list(df.groupby('group').mean().sort_values('data', ascending=False).index)
+    return index
      
 
 
