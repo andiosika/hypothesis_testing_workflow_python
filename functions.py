@@ -201,7 +201,7 @@ def mult_Cohn_d(tukey_result_df, df_dict):
         g1 = row['group1']
         g2 = row['group2']
         padj = row['p-adj']
-        d = fn.Cohen_d(df_dict[g1], df_dict[g2])
+        d = Cohen_d(df_dict[g1], df_dict[g2])
 
         res.append([g1, g2,padj, d])
 
