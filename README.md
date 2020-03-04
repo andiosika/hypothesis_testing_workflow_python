@@ -7,12 +7,17 @@
 - Instructor: James Irving, PhD
 
 
-# Introduction:
 
-Provide insight build businsess case
-List questions and reference hypothesis
-[Question 1 / Hypothesis 1](#HYPOTHESIS-1)
-**Does discount amount have a statistically significant effect on the quantity of a product in an order? If so, at what level(s) of discount?** 
+Description
+For this project, we 
+Main Files
+student.ipynb - Notebook inclues data, methodologies and modeling around predictive model
+
+K_C_RealEstateEval_2014_2015.pdf - presentation summarizing findings for a non-technical audience
+
+Additional Files
+Blog Post: Categorical Data
+Video Presentation for Non-Technical Audience: King County Residential Real Estate Evaluation 2014-2015
 
 <img src="https://raw.githubusercontent.com/jirvingphd/dsc-mod-3-project-online-ds-ft-100719/master/Northwind_ERD_updated.png">
 
