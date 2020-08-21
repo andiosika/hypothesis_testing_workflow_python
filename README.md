@@ -9,7 +9,7 @@
 
 
 Description
-For this project, we 
+
 Main Files
 student.ipynb - Notebook inclues data, methodologies and modeling around hypothesis testing
 
@@ -17,7 +17,7 @@ Mod_3_preso.pdf - presentation summarizing findings for a non-technical audience
 
 Additional Files
 Blog Post: Categorical Data
-Video Presentation for Non-Technical Audience: King County Residential Real Estate Evaluation 2014-2015
+
 
 <img src="https://raw.githubusercontent.com/jirvingphd/dsc-mod-3-project-online-ds-ft-100719/master/Northwind_ERD_updated.png">
 
