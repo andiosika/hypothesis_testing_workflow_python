@@ -1,23 +1,18 @@
 # Hypothesis Testing
 
-## Student Info
+## Description
+SQL data extraction for performing A/B Testing to inform buisiness decisions making for global retailer.
+___
+## Main Files:
 
-- Name: Andi Osika
-- Cohort: ptds_100719
-- Instructor: James Irving, PhD
-
-
-
-Description - SQL data extraction for performing A/B Testing to inform buisiness decisions making for global retailer.
-
-Main Files
 student.ipynb - Notebook inclues data, methodologies and modeling around hypothesis testing
 
 Mod_3_preso.pdf - presentation summarizing findings for a non-technical audience
 
 Additional Files
 Blog Post: Categorical Data
-
+____
+### SQL Database Table Schematic Layout:
 
 <img src="https://raw.githubusercontent.com/jirvingphd/dsc-mod-3-project-online-ds-ft-100719/master/Northwind_ERD_updated.png">
 
