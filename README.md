@@ -8,7 +8,7 @@
 
 
 
-Description
+Description - SQL data extraction for performing A/B Testing to inform buisiness decisions making for global retailer.
 
 Main Files
 student.ipynb - Notebook inclues data, methodologies and modeling around hypothesis testing
