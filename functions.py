@@ -43,7 +43,7 @@ def Cohen_d(group1, group2, correction = False):
 
 #Your code here
 def find_outliers_Z(data,col=None):
-    """Use scipy to calcualte absoliute Z-scores 
+    """Use scipy to calcualte absolute Z-scores 
     and return boolean series where True indicates it is an outlier
 
     Args:
